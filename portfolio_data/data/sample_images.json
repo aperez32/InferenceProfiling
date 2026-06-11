@@ -1,0 +1,44 @@
+[
+  {
+    "id": "sroie_sample_01",
+    "image": "images/sroie_sample_01.png",
+    "text": "TAN WOON YANN",
+    "text_length": 13,
+    "source_dataset": "priyank-m/SROIE_2019_text_recognition"
+  },
+  {
+    "id": "sroie_sample_02",
+    "image": "images/sroie_sample_02.png",
+    "text": "BOOK TA .K(TAMAN DAYA) SDN BND",
+    "text_length": 30,
+    "source_dataset": "priyank-m/SROIE_2019_text_recognition"
+  },
+  {
+    "id": "sroie_sample_03",
+    "image": "images/sroie_sample_03.png",
+    "text": "789417-W",
+    "text_length": 8,
+    "source_dataset": "priyank-m/SROIE_2019_text_recognition"
+  },
+  {
+    "id": "sroie_sample_04",
+    "image": "images/sroie_sample_04.png",
+    "text": "NO.53 55,57 & 59, JALAN SAGU 18,",
+    "text_length": 32,
+    "source_dataset": "priyank-m/SROIE_2019_text_recognition"
+  },
+  {
+    "id": "sroie_sample_05",
+    "image": "images/sroie_sample_05.png",
+    "text": "TAMAN DAYA,",
+    "text_length": 11,
+    "source_dataset": "priyank-m/SROIE_2019_text_recognition"
+  },
+  {
+    "id": "sroie_sample_06",
+    "image": "images/sroie_sample_06.png",
+    "text": "81100 JOHOR BAHRU,",
+    "text_length": 18,
+    "source_dataset": "priyank-m/SROIE_2019_text_recognition"
+  }
+]

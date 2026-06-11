@@ -1,0 +1,36 @@
+{
+  "title": "Profiling and Reducing TrOCR Inference Cost",
+  "model": "microsoft/trocr-base-printed",
+  "dataset": "priyank-m/SROIE_2019_text_recognition",
+  "gpu": "NVIDIA GeForce RTX 4070",
+  "assumed_gpu_hour_cost_usd": 0.5,
+  "sections": [
+    "examples",
+    "architecture",
+    "batch_size_scaling",
+    "batching_strategy",
+    "profiler_call_trees",
+    "conclusions"
+  ],
+  "assets": {
+    "sample_images": "data/sample_images.json",
+    "metrics": "data/portfolio_metrics.json",
+    "improvements": "data/batching_improvements.json",
+    "plots": {
+      "repeat_image_throughput": "plots/repeat_image_throughput.html",
+      "random_batch_throughput": "plots/random_batch_throughput.html",
+      "batching_strategy_throughput": "plots/batching_strategy_throughput.html",
+      "batching_strategy_cost": "plots/batching_strategy_cost.html",
+      "batching_strategy_latency": "plots/batching_strategy_latency.html",
+      "tail_latency": "plots/batching_strategy_tail_latency.html",
+      "latency_vs_generated_tokens": "plots/latency_vs_generated_tokens.html",
+      "latency_vs_text_length": "plots/latency_vs_text_length.html"
+    },
+    "call_trees": {
+      "random_bs16": "call_trees/random_bs16_call_tree.html",
+      "random_bs64": "call_trees/random_bs64_call_tree.html",
+      "bucketed_bs32": "call_trees/bucketed_bs32_call_tree.html",
+      "bucketed_bs64": "call_trees/bucketed_bs64_call_tree.html"
+    }
+  }
+}

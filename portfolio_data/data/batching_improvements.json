@@ -1,0 +1,47 @@
+[
+  {
+    "batch_size": 4,
+    "throughput_gain_pct": 67.03865249077458,
+    "cost_reduction_pct": 40.133616675625426,
+    "random_images_per_sec": 29.1857,
+    "bucketed_images_per_sec": 48.7514,
+    "random_cost_per_1k_usd": 0.0047587993054437,
+    "bucketed_cost_per_1k_usd": 0.0028489210338346
+  },
+  {
+    "batch_size": 8,
+    "throughput_gain_pct": 98.1077838825217,
+    "cost_reduction_pct": 49.52242761985738,
+    "random_images_per_sec": 34.9273,
+    "bucketed_images_per_sec": 69.1937,
+    "random_cost_per_1k_usd": 0.0039765137553973,
+    "bucketed_cost_per_1k_usd": 0.002007247609087
+  },
+  {
+    "batch_size": 16,
+    "throughput_gain_pct": 100.38254263336981,
+    "cost_reduction_pct": 50.095453083972544,
+    "random_images_per_sec": 44.7009,
+    "bucketed_images_per_sec": 89.5728,
+    "random_cost_per_1k_usd": 0.0031070714211322,
+    "bucketed_cost_per_1k_usd": 0.0015505699150734
+  },
+  {
+    "batch_size": 32,
+    "throughput_gain_pct": 149.78411441935776,
+    "cost_reduction_pct": 59.96542845310455,
+    "random_images_per_sec": 42.2446,
+    "bucketed_images_per_sec": 105.5203,
+    "random_cost_per_1k_usd": 0.0032877311866815,
+    "bucketed_cost_per_1k_usd": 0.0013162290942016
+  },
+  {
+    "batch_size": 64,
+    "throughput_gain_pct": 150.9961592001606,
+    "cost_reduction_pct": 60.158752899382904,
+    "random_images_per_sec": 45.3291,
+    "bucketed_images_per_sec": 113.7743,
+    "random_cost_per_1k_usd": 0.0030640116148101,
+    "bucketed_cost_per_1k_usd": 0.0012207404386481
+  }
+]

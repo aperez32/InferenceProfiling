@@ -1,0 +1,79 @@
+[
+  {
+    "id": "examples",
+    "title": "Receipt OCR Examples",
+    "summary": "Real SROIE receipt text crops with ground-truth labels show the input variation behind the benchmark.",
+    "assets": [
+      "data/sample_images.json"
+    ]
+  },
+  {
+    "id": "architecture",
+    "title": "How TrOCR Runs",
+    "summary": "TrOCR uses a Vision Transformer encoder and an autoregressive text decoder, which makes decode length and batch composition important.",
+    "assets": [
+      "content/trocr_architecture.md"
+    ]
+  },
+  {
+    "id": "controlled_scaling",
+    "title": "Controlled Batch Scaling",
+    "summary": "Repeated-image batches isolate batch-size scaling from input variation and show where throughput begins to saturate.",
+    "assets": [
+      "plots/repeat_image_throughput.html",
+      "plots/repeat_image_latency.html",
+      "data/repeat_image_scaling_results.csv"
+    ]
+  },
+  {
+    "id": "random_batches",
+    "title": "Random Real-Data Batches",
+    "summary": "Random SROIE batches expose straggler behavior and rising tail latency on varied OCR inputs.",
+    "assets": [
+      "plots/random_batch_throughput.html",
+      "plots/random_batch_latency.html",
+      "data/random_batch_results.csv",
+      "data/random_batch_metrics.csv"
+    ]
+  },
+  {
+    "id": "cost_aware_batching",
+    "title": "Cost-Aware Batching",
+    "summary": "Grouping samples by similar text length improves throughput and lowers estimated GPU cost per 1k images.",
+    "assets": [
+      "plots/batching_strategy_throughput.html",
+      "plots/batching_strategy_cost.html",
+      "plots/batching_strategy_latency.html",
+      "data/batching_comparison_results.csv",
+      "data/batching_improvements.json"
+    ]
+  },
+  {
+    "id": "difficulty_correlations",
+    "title": "What Makes a Batch Slow",
+    "summary": "Per-batch scatter plots relate latency to generated token count and ground-truth text length.",
+    "assets": [
+      "plots/latency_vs_generated_tokens.html",
+      "plots/latency_vs_text_length.html"
+    ]
+  },
+  {
+    "id": "profiler_views",
+    "title": "Profiler Call Trees",
+    "summary": "Interactive call trees show CPU ops, CUDA runtime calls, and GPU stream work for representative batches.",
+    "assets": [
+      "call_trees/random_bs16_call_tree.html",
+      "call_trees/random_bs64_call_tree.html",
+      "call_trees/bucketed_bs32_call_tree.html",
+      "call_trees/bucketed_bs64_call_tree.html"
+    ]
+  },
+  {
+    "id": "conclusions",
+    "title": "Conclusion",
+    "summary": "Smarter request scheduling can cut estimated GPU cost without changing the model.",
+    "assets": [
+      "content/conclusions.md"
+    ]
+  }
+]

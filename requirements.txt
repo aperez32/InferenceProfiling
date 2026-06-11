@@ -1,0 +1,9 @@
+torch
+torchvision
+transformers
+datasets
+accelerate
+pillow
+pandas
+plotly
+tqdm
