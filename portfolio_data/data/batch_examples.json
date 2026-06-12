@@ -1,0 +1,105 @@
+{
+  "source_dataset": "priyank-m/SROIE_2019_text_recognition",
+  "random_seed": 42,
+  "batch_size": 8,
+  "random_batch": [
+    {
+      "index": 114,
+      "text": "WAXCO WINDSHILED CLEANER 120ML",
+      "length": 30,
+      "image": "images/batch_examples/random_01.png"
+    },
+    {
+      "index": 25,
+      "text": "9.000",
+      "length": 5,
+      "image": "images/batch_examples/random_02.png"
+    },
+    {
+      "index": 281,
+      "text": "DESCRIPTION",
+      "length": 11,
+      "image": "images/batch_examples/random_03.png"
+    },
+    {
+      "index": 250,
+      "text": "QTY(S) : 5",
+      "length": 10,
+      "image": "images/batch_examples/random_04.png"
+    },
+    {
+      "index": 228,
+      "text": "WD40 27ML MOO 2572",
+      "length": 18,
+      "image": "images/batch_examples/random_05.png"
+    },
+    {
+      "index": 142,
+      "text": "OPERATOR TRAINEE CASHIER",
+      "length": 24,
+      "image": "images/batch_examples/random_06.png"
+    },
+    {
+      "index": 104,
+      "text": "X",
+      "length": 1,
+      "image": "images/batch_examples/random_07.png"
+    },
+    {
+      "index": 89,
+      "text": "THANK YOU ! FLEASE COME AOSIN !",
+      "length": 31,
+      "image": "images/batch_examples/random_08.png"
+    }
+  ],
+  "sorted_text_length_batch": [
+    {
+      "index": 4,
+      "text": "TAMAN DAYA,",
+      "length": 11,
+      "image": "images/batch_examples/sorted_01.png"
+    },
+    {
+      "index": 53,
+      "text": "CASHIER: CN",
+      "length": 11,
+      "image": "images/batch_examples/sorted_02.png"
+    },
+    {
+      "index": 55,
+      "text": "MB: MO26588",
+      "length": 11,
+      "image": "images/batch_examples/sorted_03.png"
+    },
+    {
+      "index": 56,
+      "text": "ROOM NO: 01",
+      "length": 11,
+      "image": "images/batch_examples/sorted_04.png"
+    },
+    {
+      "index": 108,
+      "text": "HC03-7 - 15",
+      "length": 11,
+      "image": "images/batch_examples/sorted_05.png"
+    },
+    {
+      "index": 128,
+      "text": "ITEM(S) : 4",
+      "length": 11,
+      "image": "images/batch_examples/sorted_06.png"
+    },
+    {
+      "index": 148,
+      "text": "(JM0517726)",
+      "length": 11,
+      "image": "images/batch_examples/sorted_07.png"
+    },
+    {
+      "index": 163,
+      "text": "SALESPERSON",
+      "length": 11,
+      "image": "images/batch_examples/sorted_08.png"
+    }
+  ]
+}

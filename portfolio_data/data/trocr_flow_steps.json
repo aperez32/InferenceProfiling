@@ -1,0 +1,271 @@
+{
+  "model_id": "microsoft/trocr-base-printed",
+  "dataset_id": "priyank-m/SROIE_2019_text_recognition",
+  "dataset_split": "train",
+  "dataset_index": 114,
+  "ground_truth": "WAXCO WINDSHILED CLEANER 120ML",
+  "input_image": "images/architecture/trocr_flow_input.png",
+  "preprocessing": [
+    "crop",
+    "resize",
+    "normalize",
+    "patchify",
+    "flatten"
+  ],
+  "patch_preview": {
+    "count": 12,
+    "label": "image patches"
+  },
+  "encoder": {
+    "repeat": "xN",
+    "layers": [
+      "multi-head self-attention",
+      "feed-forward network"
+    ]
+  },
+  "decoder": {
+    "repeat": "token loop",
+    "layers": [
+      "masked multi-head self-attention",
+      "cross-attention over image features",
+      "feed-forward network"
+    ]
+  },
+  "generation": {
+    "start_token": "</s>",
+    "steps": [
+      {
+        "step": 1,
+        "decoder_input_tokens": [
+          "</s>"
+        ],
+        "next_token": "WA",
+        "next_token_id": 8460,
+        "decoded_text": "WA",
+        "is_eos": false
+      },
+      {
+        "step": 2,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA"
+        ],
+        "next_token": "X",
+        "next_token_id": 1000,
+        "decoded_text": "WAX",
+        "is_eos": false
+      },
+      {
+        "step": 3,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X"
+        ],
+        "next_token": "CO",
+        "next_token_id": 6335,
+        "decoded_text": "WAXCO",
+        "is_eos": false
+      },
+      {
+        "step": 4,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO"
+        ],
+        "next_token": " WIN",
+        "next_token_id": 17164,
+        "decoded_text": "WAXCO WIN",
+        "is_eos": false
+      },
+      {
+        "step": 5,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN"
+        ],
+        "next_token": "DS",
+        "next_token_id": 5433,
+        "decoded_text": "WAXCO WINDS",
+        "is_eos": false
+      },
+      {
+        "step": 6,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS"
+        ],
+        "next_token": "H",
+        "next_token_id": 725,
+        "decoded_text": "WAXCO WINDSH",
+        "is_eos": false
+      },
+      {
+        "step": 7,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H"
+        ],
+        "next_token": "IL",
+        "next_token_id": 3063,
+        "decoded_text": "WAXCO WINDSHIL",
+        "is_eos": false
+      },
+      {
+        "step": 8,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL"
+        ],
+        "next_token": "ED",
+        "next_token_id": 1691,
+        "decoded_text": "WAXCO WINDSHILED",
+        "is_eos": false
+      },
+      {
+        "step": 9,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL",
+          "ED"
+        ],
+        "next_token": " CLE",
+        "next_token_id": 25511,
+        "decoded_text": "WAXCO WINDSHILED CLE",
+        "is_eos": false
+      },
+      {
+        "step": 10,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL",
+          "ED",
+          " CLE"
+        ],
+        "next_token": "AN",
+        "next_token_id": 1889,
+        "decoded_text": "WAXCO WINDSHILED CLEAN",
+        "is_eos": false
+      },
+      {
+        "step": 11,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL",
+          "ED",
+          " CLE",
+          "AN"
+        ],
+        "next_token": "ER",
+        "next_token_id": 2076,
+        "decoded_text": "WAXCO WINDSHILED CLEANER",
+        "is_eos": false
+      },
+      {
+        "step": 12,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL",
+          "ED",
+          " CLE",
+          "AN",
+          "ER"
+        ],
+        "next_token": " 120",
+        "next_token_id": 5962,
+        "decoded_text": "WAXCO WINDSHILED CLEANER 120",
+        "is_eos": false
+      },
+      {
+        "step": 13,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL",
+          "ED",
+          " CLE",
+          "AN",
+          "ER",
+          " 120"
+        ],
+        "next_token": "ML",
+        "next_token_id": 10537,
+        "decoded_text": "WAXCO WINDSHILED CLEANER 120ML",
+        "is_eos": false
+      },
+      {
+        "step": 14,
+        "decoder_input_tokens": [
+          "</s>",
+          "WA",
+          "X",
+          "CO",
+          " WIN",
+          "DS",
+          "H",
+          "IL",
+          "ED",
+          " CLE",
+          "AN",
+          "ER",
+          " 120",
+          "ML"
+        ],
+        "next_token": "</s>",
+        "next_token_id": 2,
+        "decoded_text": "WAXCO WINDSHILED CLEANER 120ML",
+        "is_eos": true
+      }
+    ],
+    "final_text": "WAXCO WINDSHILED CLEANER 120ML"
+  }
+}

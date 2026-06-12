@@ -14,10 +14,14 @@
   ],
   "assets": {
     "sample_images": "data/sample_images.json",
+    "batch_examples": "data/batch_examples.json",
+    "trocr_flow": "data/trocr_flow_steps.json",
     "metrics": "data/portfolio_metrics.json",
     "improvements": "data/batching_improvements.json",
     "plots": {
       "repeat_image_throughput": "plots/repeat_image_throughput.html",
+      "repeat_image_latency": "plots/repeat_image_latency.html",
+      "repeat_image_memory": "plots/repeat_image_memory.html",
       "random_batch_throughput": "plots/random_batch_throughput.html",
       "batching_strategy_throughput": "plots/batching_strategy_throughput.html",
       "batching_strategy_cost": "plots/batching_strategy_cost.html",
@@ -27,10 +31,10 @@
       "latency_vs_text_length": "plots/latency_vs_text_length.html"
     },
     "call_trees": {
-      "random_bs16": "call_trees/random_bs16_call_tree.html",
-      "random_bs64": "call_trees/random_bs64_call_tree.html",
-      "bucketed_bs32": "call_trees/bucketed_bs32_call_tree.html",
-      "bucketed_bs64": "call_trees/bucketed_bs64_call_tree.html"
+      "random_bs64_cpu": "call_trees/random_bs64_cpu_call_tree.html",
+      "random_bs64_gpu": "call_trees/random_bs64_gpu_call_tree.html",
+      "bucketed_bs64_cpu": "call_trees/bucketed_bs64_cpu_call_tree.html",
+      "bucketed_bs64_gpu": "call_trees/bucketed_bs64_gpu_call_tree.html"
     }
   }
 }

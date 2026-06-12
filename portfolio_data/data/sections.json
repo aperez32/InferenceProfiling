@@ -62,10 +62,10 @@
     "title": "Profiler Call Trees",
     "summary": "Interactive call trees show CPU ops, CUDA runtime calls, and GPU stream work for representative batches.",
     "assets": [
-      "call_trees/random_bs16_call_tree.html",
-      "call_trees/random_bs64_call_tree.html",
-      "call_trees/bucketed_bs32_call_tree.html",
-      "call_trees/bucketed_bs64_call_tree.html"
+      "call_trees/random_bs64_cpu_call_tree.html",
+      "call_trees/random_bs64_gpu_call_tree.html",
+      "call_trees/bucketed_bs64_cpu_call_tree.html",
+      "call_trees/bucketed_bs64_gpu_call_tree.html"
     ]
   },
   {

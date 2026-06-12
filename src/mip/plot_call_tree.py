@@ -68,6 +68,38 @@ def parse_args() -> argparse.Namespace:
         default=12,
         help="Maximum nesting depth to keep in the chart.",
     )
+    parser.add_argument(
+        "--orientation",
+        choices=["h", "v"],
+        default="h",
+        help="Icicle orientation. Use v to rotate the call tree by 90 degrees.",
+    )
+    parser.add_argument(
+        "--title",
+        default="Profiler Call Tree",
+        help="Chart title.",
+    )
+    parser.add_argument(
+        "--root-label",
+        default=None,
+        help="Override the root label shown in the chart.",
+    )
+    parser.add_argument(
+        "--root-duration-ms",
+        type=float,
+        default=None,
+        help="Force the root duration so related charts share a visual time scale.",
+    )
+    parser.add_argument(
+        "--hide-thread-nodes",
+        action="store_true",
+        help="Attach top-level events directly to the trace root instead of adding pid/tid bars.",
+    )
+    parser.add_argument(
+        "--output-stem",
+        default=None,
+        help="Use this filename stem instead of deriving one from the trace filename.",
+    )
     return parser.parse_args()
 
 
@@ -126,6 +158,9 @@ def build_call_tree(
     categories: set[str],
     min_duration_us: float,
     max_depth: int,
+    root_label: str | None = None,
+    root_duration_us: float | None = None,
+    hide_thread_nodes: bool = False,
 ) -> list[TreeNode]:
     trace = load_trace(trace_path)
     grouped_events: dict[tuple[object, object], list[dict[str, Any]]] = defaultdict(list)
@@ -140,11 +175,11 @@ def build_call_tree(
         grouped_events[thread_key(event)].append(event)
 
     batch_size = batch_size_from_name(trace_path)
-    root_label = f"batch_size={batch_size}" if batch_size is not None else trace_path.name
+    default_root_label = f"batch_size={batch_size}" if batch_size is not None else trace_path.name
     nodes: dict[str, TreeNode] = {
         "root": TreeNode(
             id="root",
-            label=root_label,
+            label=root_label or default_root_label,
             full_name=str(trace_path),
             category="trace",
             parent="",
@@ -153,12 +188,14 @@ def build_call_tree(
 
     for (pid, tid), events in grouped_events.items():
         events.sort(key=lambda event: (event_start_us(event), -event_duration_us(event)))
-        thread_id = add_child_node(
-            nodes,
-            "root",
-            name=thread_label(pid, tid),
-            category="thread",
-        )
+        thread_id = "root"
+        if not hide_thread_nodes:
+            thread_id = add_child_node(
+                nodes,
+                "root",
+                name=thread_label(pid, tid),
+                category="thread",
+            )
         stack: list[tuple[str, float, float]] = [(thread_id, float("inf"), 0.0)]
 
         for event in events:
@@ -200,10 +237,18 @@ def build_call_tree(
         return node.inclusive_us, node.count
 
     fill_container_totals("root")
+    if root_duration_us is not None:
+        nodes["root"].inclusive_us = max(nodes["root"].inclusive_us, root_duration_us)
     return list(nodes.values())
 
 
-def write_call_tree(nodes: list[TreeNode], output_path: Path) -> None:
+def write_call_tree(
+    nodes: list[TreeNode],
+    output_path: Path,
+    *,
+    title: str,
+    orientation: str,
+) -> None:
     filtered_nodes = [
         node
         for node in nodes
@@ -223,6 +268,19 @@ def write_call_tree(nodes: list[TreeNode], output_path: Path) -> None:
         ]
         for node in filtered_nodes
     ]
+    palette = {
+        "trace": "#efe7dc",
+        "thread": "#d8ddd2",
+        "user_annotation": "#8a5b49",
+        "gpu_user_annotation": "#8a5b49",
+        "cpu_op": "#486f73",
+        "cuda_runtime": "#6f5f8f",
+        "cuda_driver": "#786d58",
+        "kernel": "#b66a4d",
+        "gpu_memcpy": "#6b856d",
+        "gpu_memset": "#6b856d",
+    }
+    colors = [palette.get(node.category, "#9aa69f") for node in filtered_nodes]
 
     fig = go.Figure(
         go.Icicle(
@@ -232,7 +290,8 @@ def write_call_tree(nodes: list[TreeNode], output_path: Path) -> None:
             values=values,
             branchvalues="total",
             customdata=custom_data,
-            tiling={"orientation": "h"},
+            marker={"colors": colors},
+            tiling={"orientation": orientation},
             hovertemplate=(
                 "<b>%{customdata[0]}</b><br>"
                 "Category: %{customdata[1]}<br>"
@@ -244,9 +303,12 @@ def write_call_tree(nodes: list[TreeNode], output_path: Path) -> None:
         )
     )
     fig.update_layout(
-        title="Profiler Call Tree",
-        margin={"l": 16, "r": 16, "t": 56, "b": 16},
-        height=900,
+        title=title,
+        margin={"l": 16, "r": 16, "t": 48, "b": 12},
+        height=680,
+        font={"family": "Inter, Arial, sans-serif", "color": "#172026"},
+        paper_bgcolor="#ffffff",
+        plot_bgcolor="#ffffff",
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.write_html(output_path, include_plotlyjs="cdn")
@@ -265,8 +327,18 @@ def main() -> None:
             categories=set(args.categories),
             min_duration_us=args.min_duration_us,
             max_depth=args.max_depth,
+            root_label=args.root_label,
+            root_duration_us=(
+                args.root_duration_ms * 1000 if args.root_duration_ms is not None else None
+            ),
+            hide_thread_nodes=args.hide_thread_nodes,
         )
-        write_call_tree(nodes, args.output_dir / f"{sanitized_stem(path)}_call_tree.html")
+        write_call_tree(
+            nodes,
+            args.output_dir / f"{args.output_stem or sanitized_stem(path)}_call_tree.html",
+            title=args.title,
+            orientation=args.orientation,
+        )
 
 
 if __name__ == "__main__":
